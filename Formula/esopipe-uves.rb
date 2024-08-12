@@ -1,17 +1,17 @@
 # typed: true
 # frozen_string_literal: true
 
-# Muse
-class EsopipeMuse < Formula
-  desc "ESO Muse recipe plugins"
+# Uves
+class EsopipeUves < Formula
+  desc "ESO Uves recipe plugins"
   homepage "https://www.eso.org/sci/software/pipelines/"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/muse/muse-kit-2.10.10.tar.gz"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/uves/uves-kit-6.4.6.tar.gz"
   # sha256 "0d80c8cd55a271f2cb31549483ee139ac2e8054c759825d56bb605c41779a10a"
   license "GPL-2.0-or-later"
 
   livecheck do
     url :homepage
-    regex(/href=.*?muse-kit-(\d+(?:[.-]\d+)+)\.t/i)
+    regex(/href=.*?uves-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
   depends_on "cpl"
@@ -23,8 +23,8 @@ class EsopipeMuse < Formula
 
   def install
     version_norevision = version.to_s[/(\d+(?:[.]\d+)+)/i, 1]
-    system "tar", "xf", "muse-#{version_norevision}.tar.gz"
-    cd "muse-#{version_norevision}" do
+    system "tar", "xf", "uves-#{version_norevision}.tar.gz"
+    cd "uves-#{version_norevision}" do
       system "./configure", "--prefix=#{prefix}",
              "--with-cpl=#{Formula["cpl"].prefix}",
              "--with-curl=#{Formula["curl"].prefix}",
@@ -36,6 +36,6 @@ class EsopipeMuse < Formula
 
   test do
     version_norevision = version.to_s[/(\d+(?:[.]\d+)+)/i, 1]
-    assert_match "muse_bias -- version #{version_norevision}", shell_output("#{HOMEBREW_PREFIX}/bin/esorex --man-page muse_bias")
+    assert_match "uves_cal_mbias -- version #{version_norevision}", shell_output("#{HOMEBREW_PREFIX}/bin/esorex --man-page uves_cal_mbias")
   end
 end
