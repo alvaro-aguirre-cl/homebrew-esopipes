@@ -6,7 +6,7 @@ class EsopipeHawki < Formula
   desc "ESO Hawki recipe plugins"
   homepage "https://www.eso.org/sci/software/pipelines/"
   url "https://ftp.eso.org/pub/dfs/pipelines/instruments/hawki/hawki-kit-2.4.13-3.tar.gz"
-  # sha256 "0d80c8cd55a271f2cb31549483ee139ac2e8054c759825d56bb605c41779a10a"
+  sha256 "a48297e56d216d566fb1bbb112d85243ba2a013c5ef9302c9dbe8745038d42e3"
   license "GPL-2.0-or-later"
 
   livecheck do
