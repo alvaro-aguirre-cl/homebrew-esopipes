@@ -20,7 +20,6 @@ class EsopipeEspresso < Formula
   depends_on "gsl"
   depends_on "libffi"
   depends_on "pkg-config"
-  
 
   def install
     version_norevision = version.to_s[/(\d+(?:[.]\d+)+)/i, 1]
