@@ -15,6 +15,11 @@ class Telluriccorr < Formula
     regex(/href=.*?telluriccorr[._-]v?(\d+(?:\.\d+)+)\.t/i)
   end
 
+  bottle do
+    root_url "https://github.com/alvaro-aguirre-cl/homebrew-esopipes/releases/download/telluriccorr-4.3.1_2"
+    sha256 arm64_sonoma: "5164597df34c7a0b73db58f5b1a75095166f06b65f07045b7f65a8580be4737b"
+  end
+
   depends_on "cpl"
 
   patch do
