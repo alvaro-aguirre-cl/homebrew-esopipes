@@ -16,6 +16,7 @@ class EsopipeCrires < Formula
   end
 
   depends_on "cpl"
+  depends_on "esorex"
   depends_on "libffi"
 
   def install

@@ -17,6 +17,7 @@ class EsopipeEspresso < Formula
 
   depends_on "cpl"
   depends_on "erfa"
+  depends_on "esorex"
   depends_on "gsl"
   depends_on "libffi"
   depends_on "pkg-config"
