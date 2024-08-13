@@ -1,36 +1,36 @@
 # typed: strict
 # frozen_string_literal: true
 
-# Uves
-class EsopipeUves < Formula
-  desc "ESO Uves recipe plugins"
+# Xshooter
+class EsopipeXshooter < Formula
+  desc "ESO XSHOOTER recipe plugins"
   homepage "https://www.eso.org/sci/software/pipelines/"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/uves/uves-kit-6.4.6.tar.gz"
-  sha256 "0d80c8cd55a271f2cb31549483ee139ac2e8054c759825d56bb605c41779a10a"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/xshooter/xshoo-kit-3.6.8.tar.gz"
+  sha256 "e50f7172d65de8b8f54fc47a333d49a5fa6db34aabe097bbc1a3449f455ab2b9"
   license "GPL-2.0-or-later"
 
   livecheck do
     url :homepage
-    regex(/href=.*?uves-kit-(\d+(?:[.-]\d+)+)\.t/i)
+    regex(/href=.*?xshoo-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
   depends_on "cfitsio"
   depends_on "cpl"
-  depends_on "curl"
   depends_on "erfa"
   depends_on "esorex"
   depends_on "gsl"
   depends_on "pkg-config"
+  depends_on "telluriccorr"
 
   def install
     version_norevision = version.to_s[/(\d+(?:[.]\d+)+)/i, 1]
-    system "tar", "xf", "uves-#{version_norevision}.tar.gz"
-    cd "uves-#{version_norevision}" do
+    system "tar", "xf", "xshoo-#{version_norevision}.tar.gz"
+    cd "xshoo-#{version_norevision}" do
       system "./configure", "--prefix=#{prefix}",
-             "--with-cpl=#{Formula["cpl"].prefix}",
              "--with-cfitsio=#{Formula["cfitsio"].prefix}",
-             "--with-curl=#{Formula["curl"].prefix}",
+             "--with-cpl=#{Formula["cpl"].prefix}",
              "--with-erfa=#{Formula["erfa"].prefix}",
+             "--with-telluriccorr=#{Formula["telluriccorr"].prefix}",
              "--with-gsl=#{Formula["gsl"].prefix}"
       system "make", "install"
     end
@@ -38,6 +38,6 @@ class EsopipeUves < Formula
 
   test do
     version_norevision = version.to_s[/(\d+(?:[.]\d+)+)/i, 1]
-    assert_match "uves_cal_mbias -- version #{version_norevision}", shell_output("#{HOMEBREW_PREFIX}/bin/esorex --man-page uves_cal_mbias")
+    assert_match "xshooter_dark -- version #{version_norevision}", shell_output("#{HOMEBREW_PREFIX}/bin/esorex --man-page xshooter_dark")
   end
 end
