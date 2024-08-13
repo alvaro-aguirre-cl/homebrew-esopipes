@@ -19,6 +19,7 @@ class EsopipeEspresso < Formula
   depends_on "erfa"
   depends_on "gsl"
   depends_on "pkg-config"
+  depends_on "libffi"
 
   def install
     version_norevision = version.to_s[/(\d+(?:[.]\d+)+)/i, 1]
@@ -27,7 +28,8 @@ class EsopipeEspresso < Formula
       system "./configure", "--prefix=#{prefix}",
              "--with-cpl=#{Formula["cpl"].prefix}",
              "--with-erfa=#{Formula["erfa"].prefix}",
-             "--with-gsl=#{Formula["gsl"].prefix}"
+             "--with-gsl=#{Formula["gsl"].prefix}",
+             "--with-libffi=#{Formula["libffi"].prefix}"
       system "make", "install"
     end
   end

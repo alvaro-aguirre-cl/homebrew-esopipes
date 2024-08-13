@@ -16,13 +16,15 @@ class EsopipeCrires < Formula
   end
 
   depends_on "cpl"
+  depends_on "libffi"
 
   def install
     version_norevision = version.to_s[/(\d+(?:[.]\d+)+)/i, 1]
     system "tar", "xf", "crire-#{version_norevision}.tar.gz"
     cd "crire-#{version_norevision}" do
       system "./configure", "--prefix=#{prefix}",
-             "--with-cpl=#{Formula["cpl"].prefix}"
+             "--with-cpl=#{Formula["cpl"].prefix}",
+             "--with-libffi=#{Formula["libffi"].prefix}"
       system "make", "install"
     end
   end
