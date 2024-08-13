@@ -8,16 +8,11 @@ class Telluriccorr < Formula
   url "https://ftp.eso.org/pub/dfs/pipelines/libraries/telluriccorr/telluriccorr-4.3.1.tar.gz"
   sha256 "a02dc7389588033efd22f71f0712f1b97d00cd732f701dee1b1e093dc062a64b"
   license "GPL-2.0-or-later"
-  revision 2
+  revision 3
 
   livecheck do
     url "https://ftp.eso.org/pub/dfs/pipelines/libraries/telluriccorr/"
     regex(/href=.*?telluriccorr[._-]v?(\d+(?:\.\d+)+)\.t/i)
-  end
-
-  bottle do
-    root_url "https://github.com/alvaro-aguirre-cl/homebrew-esopipes/releases/download/telluriccorr-4.3.1_2"
-    sha256 arm64_sonoma: "5164597df34c7a0b73db58f5b1a75095166f06b65f07045b7f65a8580be4737b"
   end
 
   depends_on "cpl"
