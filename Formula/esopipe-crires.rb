@@ -8,6 +8,7 @@ class EsopipeCrires < Formula
   url "https://ftp.eso.org/pub/dfs/pipelines/instruments/crires/crire-kit-2.3.18.tar.gz"
   sha256 "719fd464113a972c18f51335d4531747cbd712e102e226bcddacb4674aae8fb8"
   license "GPL-2.0-or-later"
+  revision 1
 
   livecheck do
     url :homepage
