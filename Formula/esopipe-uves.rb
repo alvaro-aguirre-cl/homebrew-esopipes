@@ -14,6 +14,12 @@ class EsopipeUves < Formula
     regex(/href=.*?uves-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
+  bottle do
+    root_url "https://github.com/alvaro-aguirre-cl/homebrew-esopipes/releases/download/esopipe-uves-6.4.6"
+    rebuild 1
+    sha256 cellar: :any, arm64_sonoma: "e5dc12a922ef6b279919b92945a7a4c57e5182dbb18b2c5ac9a9a8c183c9c5ec"
+  end
+
   depends_on "cfitsio"
   depends_on "cpl"
   depends_on "curl"
