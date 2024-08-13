@@ -18,8 +18,9 @@ class EsopipeEspresso < Formula
   depends_on "cpl"
   depends_on "erfa"
   depends_on "gsl"
-  depends_on "pkg-config"
   depends_on "libffi"
+  depends_on "pkg-config"
+  
 
   def install
     version_norevision = version.to_s[/(\d+(?:[.]\d+)+)/i, 1]
