@@ -14,6 +14,11 @@ class EsopipeHawki < Formula
     regex(/href=.*?hawki-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
+  bottle do
+    root_url "https://github.com/alvaro-aguirre-cl/homebrew-esopipes/releases/download/esopipe-hawki-2.5.7"
+    sha256 cellar: :any, arm64_sonoma: "9b4f2c9c40358ded4b587ac701c994c2e02e98e9ce209e07bf0344ae4439a4bf"
+  end
+
   depends_on "cpl"
   depends_on "esorex"
   depends_on "gsl"
