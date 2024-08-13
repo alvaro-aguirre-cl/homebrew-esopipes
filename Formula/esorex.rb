@@ -11,6 +11,11 @@ class Esorex < Formula
     regex(/href=.*?esorex[._-]v?(\d+(?:\.\d+)+)\.t/i)
   end
 
+  bottle do
+    root_url "https://github.com/alvaro-aguirre-cl/homebrew-esopipes/releases/download/esorex-3.13.8_1"
+    sha256 arm64_sonoma: "13afd419f5c27a96dedbbb0dd466a4a6b2816e9cd45feb28322230476080ebe7"
+  end
+
   depends_on "cpl"
   depends_on "gsl"
   depends_on "libffi"
