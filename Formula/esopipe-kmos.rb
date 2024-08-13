@@ -8,6 +8,7 @@ class EsopipeKmos < Formula
   url "https://ftp.eso.org/pub/dfs/pipelines/instruments/kmos/kmos-kit-4.4.4.tar.gz"
   sha256 "455b58e777335f59f31e7af56d77d64f54ea8a9f58dedae9851fbf75864de612"
   license "GPL-2.0-or-later"
+  revision 1
 
   livecheck do
     url :homepage
@@ -33,6 +34,8 @@ class EsopipeKmos < Formula
              "--with-cpl=#{Formula["cpl"].prefix}",
              "--with-telluriccorr=#{Formula["telluriccorr"].prefix}"
       system "make", "install"
+      rm bin/"kmos_calib.py"
+      rm bin/"kmos_verify.py"
     end
   end
 

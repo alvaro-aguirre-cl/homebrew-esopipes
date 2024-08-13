@@ -8,16 +8,11 @@ class EsopipeUves < Formula
   url "https://ftp.eso.org/pub/dfs/pipelines/instruments/uves/uves-kit-6.4.6.tar.gz"
   sha256 "0d80c8cd55a271f2cb31549483ee139ac2e8054c759825d56bb605c41779a10a"
   license "GPL-2.0-or-later"
+  revision 1
 
   livecheck do
     url :homepage
     regex(/href=.*?uves-kit-(\d+(?:[.-]\d+)+)\.t/i)
-  end
-
-  bottle do
-    root_url "https://github.com/alvaro-aguirre-cl/homebrew-esopipes/releases/download/esopipe-uves-6.4.6"
-    rebuild 1
-    sha256 cellar: :any, arm64_sonoma: "e5dc12a922ef6b279919b92945a7a4c57e5182dbb18b2c5ac9a9a8c183c9c5ec"
   end
 
   depends_on "cfitsio"
