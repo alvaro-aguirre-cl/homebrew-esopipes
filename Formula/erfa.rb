@@ -15,6 +15,11 @@ class Erfa < Formula
     regex(/href=.*?erfa[._-]v?(\d+(?:\.\d+)+)\.t/i)
   end
 
+  bottle do
+    root_url "https://github.com/alvaro-aguirre-cl/homebrew-esopipes/releases/download/erfa-2.0.1_3"
+    sha256 cellar: :any, arm64_sonoma: "9f455990e5a92f00c4bf58a422ebbd07f1f0ca8554c0b484dffeffdb971f52f7"
+  end
+
   def install
     system "./configure", "--prefix=#{prefix}"
 
