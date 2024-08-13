@@ -8,17 +8,11 @@ class EsopipeMuse < Formula
   url "https://ftp.eso.org/pub/dfs/pipelines/instruments/muse/muse-kit-2.10.10.tar.gz"
   sha256 "d3d51e755a0fdffc21d5730e0041f4e3a4826ec9ffcb97c1f0f69860a7a693df"
   license "GPL-2.0-or-later"
-  revision 1
+  revision 2
 
   livecheck do
     url :homepage
     regex(/href=.*?muse-kit-(\d+(?:[.-]\d+)+)\.t/i)
-  end
-
-  bottle do
-    root_url "https://github.com/alvaro-aguirre-cl/homebrew-esopipes/releases/download/esopipe-muse-2.10.10"
-    rebuild 1
-    sha256 cellar: :any, arm64_sonoma: "1aae439134d6308fcec29a0064969bb25825f4272fdea311043311a43d5ac084"
   end
 
   depends_on "cpl"

@@ -8,17 +8,11 @@ class EsopipeFors < Formula
   url "https://ftp.eso.org/pub/dfs/pipelines/instruments/fors/fors-kit-5.6.5-7.tar.gz"
   sha256 "e492be42ae3b96e48a2a3b2981feff8712fb2d616fd1f3f3f42ba243add2a15b"
   license "GPL-2.0-or-later"
-  revision 1
+  revision 2
 
   livecheck do
     url :homepage
     regex(/href=.*?fors-kit-(\d+(?:[.-]\d+)+)\.t/i)
-  end
-
-  bottle do
-    root_url "https://github.com/alvaro-aguirre-cl/homebrew-esopipes/releases/download/esopipe-fors-5.6.5-7"
-    rebuild 1
-    sha256 arm64_sonoma: "6f07e4e6eae29d5ffee10339543b37cee112e952f629f7e26058d05ad4e0b7ea"
   end
 
   depends_on "cfitsio"
