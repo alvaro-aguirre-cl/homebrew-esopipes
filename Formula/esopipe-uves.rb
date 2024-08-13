@@ -1,4 +1,4 @@
-# typed: true
+# typed: strict
 # frozen_string_literal: true
 
 # Uves
@@ -8,12 +8,14 @@ class EsopipeUves < Formula
   url "https://ftp.eso.org/pub/dfs/pipelines/instruments/uves/uves-kit-6.4.6.tar.gz"
   sha256 "0d80c8cd55a271f2cb31549483ee139ac2e8054c759825d56bb605c41779a10a"
   license "GPL-2.0-or-later"
+  revision 1
 
   livecheck do
     url :homepage
     regex(/href=.*?uves-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
+  depends_on "cfitsio"
   depends_on "cpl"
   depends_on "curl"
   depends_on "erfa"
@@ -27,6 +29,7 @@ class EsopipeUves < Formula
     cd "uves-#{version_norevision}" do
       system "./configure", "--prefix=#{prefix}",
              "--with-cpl=#{Formula["cpl"].prefix}",
+             "--with-cfitsio=#{Formula["cfitsio"].prefix}",
              "--with-curl=#{Formula["curl"].prefix}",
              "--with-erfa=#{Formula["erfa"].prefix}",
              "--with-gsl=#{Formula["gsl"].prefix}"

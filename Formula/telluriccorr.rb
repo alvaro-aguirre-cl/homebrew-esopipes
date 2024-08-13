@@ -1,4 +1,4 @@
-# typed: true
+# typed: strict
 # frozen_string_literal: true
 
 # Telluriccorr
@@ -14,6 +14,8 @@ class Telluriccorr < Formula
     url "https://ftp.eso.org/pub/dfs/pipelines/libraries/telluriccorr/"
     regex(/href=.*?telluriccorr[._-]v?(\d+(?:\.\d+)+)\.t/i)
   end
+
+  depends_on "cpl"
 
   def install
     system "./configure", "--prefix=#{prefix}",
