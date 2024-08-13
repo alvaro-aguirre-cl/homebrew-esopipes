@@ -8,7 +8,6 @@ class EsopipeEfosc < Formula
   url "https://ftp.eso.org/pub/dfs/pipelines/instruments/efosc/efosc-kit-2.3.9.tar.gz"
   sha256 "efc7ecce753a8a77946d2ed279ee399ac4a4d7170e8a1e76fe9cbb6eda7a5e6f"
   license "GPL-2.0-or-later"
-  revision 1
 
   livecheck do
     url :homepage

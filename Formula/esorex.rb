@@ -1,3 +1,7 @@
+# typed: strict
+# frozen_string_literal: true
+
+# Esorex library
 class Esorex < Formula
   desc "Execution Tool for European Southern Observatory pipelines"
   homepage "https://www.eso.org/sci/software/cpl/"
@@ -11,24 +15,19 @@ class Esorex < Formula
     regex(/href=.*?esorex[._-]v?(\d+(?:\.\d+)+)\.t/i)
   end
 
-  bottle do
-    root_url "https://github.com/alvaro-aguirre-cl/homebrew-esopipes/releases/download/esorex-3.13.8_1"
-    sha256 arm64_sonoma: "13afd419f5c27a96dedbbb0dd466a4a6b2816e9cd45feb28322230476080ebe7"
-  end
-
   depends_on "cpl"
   depends_on "gsl"
   depends_on "libffi"
 
   def install
     system "./configure", "--disable-debug",
-                            "--disable-dependency-tracking",
-                            "--disable-silent-rules",
-                            "--prefix=#{prefix}",
-                            "--with-cpl=#{Formula["cpl"].prefix}",
-                            "--with-gsl=#{Formula["gsl"].prefix}",
-                            "--with-libffi=#{Formula["libffi"].prefix}",
-                            "--with-included-ltdl"
+           "--disable-dependency-tracking",
+           "--disable-silent-rules",
+           "--prefix=#{prefix}",
+           "--with-cpl=#{Formula["cpl"].prefix}",
+           "--with-gsl=#{Formula["gsl"].prefix}",
+           "--with-libffi=#{Formula["libffi"].prefix}",
+           "--with-included-ltdl"
     system "make", "install"
     inreplace prefix/"etc/esorex.rc", prefix/"lib/esopipes-plugins", HOMEBREW_PREFIX/"lib/esopipes-plugins"
   end
