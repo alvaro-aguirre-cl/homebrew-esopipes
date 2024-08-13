@@ -15,6 +15,7 @@ class Esorex < Formula
     regex(/href=.*?esorex[._-]v?(\d+(?:\.\d+)+)\.t/i)
   end
 
+
   depends_on "cpl"
   depends_on "gsl"
   depends_on "libffi"

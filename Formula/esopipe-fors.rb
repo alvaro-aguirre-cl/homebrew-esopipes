@@ -15,6 +15,12 @@ class EsopipeFors < Formula
     regex(/href=.*?fors-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
+  bottle do
+    root_url "https://github.com/alvaro-aguirre-cl/homebrew-esopipes/releases/download/esopipe-fors-5.6.5-7"
+    rebuild 1
+    sha256 arm64_sonoma: "6f07e4e6eae29d5ffee10339543b37cee112e952f629f7e26058d05ad4e0b7ea"
+  end
+
   depends_on "cfitsio"
   depends_on "cpl"
   depends_on "curl"

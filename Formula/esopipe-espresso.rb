@@ -10,6 +10,7 @@ class EsopipeEspresso < Formula
   license "GPL-2.0-or-later"
   revision 1
 
+
   livecheck do
     url :homepage
     regex(/href=.*?espdr-kit-(\d+(?:[.-]\d+)+)\.t/i)
@@ -35,5 +36,6 @@ class EsopipeEspresso < Formula
   test do
     version_norevision = version.to_s[/(\d+(?:[.]\d+)+)/i, 1]
     assert_match "espdr_mbias -- version #{version_norevision}", shell_output("#{HOMEBREW_PREFIX}/bin/esorex --man-page espdr_mbias")
+
   end
 end
