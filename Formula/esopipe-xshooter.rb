@@ -15,6 +15,14 @@ class EsopipeXshooter < Formula
     regex(/href=.*?xshoo-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
+  bottle do
+    root_url "https://github.com/alvaro-aguirre-cl/homebrew-esopipes/releases/download/esopipe-xshooter-3.6.8_4"
+    sha256 cellar: :any,                 arm64_sonoma: "27b2475ae7dd56a50918f328b9c5aaa3827c6434c3c4e2690a83a8aeb15b28e8"
+    sha256 cellar: :any,                 ventura:      "5386ddb2f27acb00113fc4eecf2c2af2dc2ea3b8a0a1e485b0a2c1f248d1e855"
+    sha256 cellar: :any,                 monterey:     "1f8313995a05c7db7816346ebb4b8677793fb0a655cead3f5743933f87e4ce6d"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "9529373c1802eac9ad6d54853595a7dd9895240e8155ce8f3350eab395ea14f9"
+  end
+
   depends_on "cfitsio"
   depends_on "cpl"
   depends_on "curl"
