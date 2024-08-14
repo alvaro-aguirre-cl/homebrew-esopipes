@@ -16,6 +16,7 @@ class EsopipeMuse < Formula
   end
 
   depends_on "cpl"
+  depends_on "curl"
   depends_on "erfa"
   depends_on "esorex"
   depends_on "gsl"
@@ -27,6 +28,7 @@ class EsopipeMuse < Formula
     cd "muse-#{version_norevision}" do
       system "./configure", "--prefix=#{prefix}",
              "--with-cpl=#{Formula["cpl"].prefix}",
+             "--with-curl=#{Formula["curl"].prefix}",
              "--with-erfa=#{Formula["erfa"].prefix}",
              "--with-gsl=#{Formula["gsl"].prefix}"
       system "make", "install"

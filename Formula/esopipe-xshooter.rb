@@ -17,6 +17,7 @@ class EsopipeXshooter < Formula
 
   depends_on "cfitsio"
   depends_on "cpl"
+  depends_on "curl"
   depends_on "erfa"
   depends_on "esorex"
   depends_on "gsl"
@@ -31,6 +32,7 @@ class EsopipeXshooter < Formula
              "--with-cfitsio=#{Formula["cfitsio"].prefix}",
              "--with-cpl=#{Formula["cpl"].prefix}",
              "--with-erfa=#{Formula["erfa"].prefix}",
+             "--with-curl=#{Formula["curl"].prefix}",
              "--with-telluriccorr=#{Formula["telluriccorr"].prefix}",
              "--with-gsl=#{Formula["gsl"].prefix}"
       system "make", "install"
