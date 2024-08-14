@@ -8,7 +8,7 @@ class EsopipeHawki < Formula
   url "https://ftp.eso.org/pub/dfs/pipelines/instruments/hawki/hawki-kit-2.5.7.tar.gz"
   sha256 "c0c6920b1f098f63a8d33c50865bde75ddc0c6fd5c986acda226304f6041f13b"
   license "GPL-2.0-or-later"
-  revision 3
+  revision 4
 
   livecheck do
     url :homepage
