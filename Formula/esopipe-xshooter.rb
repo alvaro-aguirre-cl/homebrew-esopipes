@@ -8,7 +8,7 @@ class EsopipeXshooter < Formula
   url "https://ftp.eso.org/pub/dfs/pipelines/instruments/xshooter/xshoo-kit-3.6.8.tar.gz"
   sha256 "e50f7172d65de8b8f54fc47a333d49a5fa6db34aabe097bbc1a3449f455ab2b9"
   license "GPL-2.0-or-later"
-  revision 2
+  revision 3
 
   livecheck do
     url :homepage
@@ -17,6 +17,7 @@ class EsopipeXshooter < Formula
 
   depends_on "cfitsio"
   depends_on "cpl"
+  depends_on "curl"
   depends_on "erfa"
   depends_on "esorex"
   depends_on "gsl"
@@ -31,6 +32,7 @@ class EsopipeXshooter < Formula
              "--with-cfitsio=#{Formula["cfitsio"].prefix}",
              "--with-cpl=#{Formula["cpl"].prefix}",
              "--with-erfa=#{Formula["erfa"].prefix}",
+             "--with-curl=#{Formula["curl"].prefix}",
              "--with-telluriccorr=#{Formula["telluriccorr"].prefix}",
              "--with-gsl=#{Formula["gsl"].prefix}"
       system "make", "install"

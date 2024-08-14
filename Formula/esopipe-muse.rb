@@ -8,7 +8,7 @@ class EsopipeMuse < Formula
   url "https://ftp.eso.org/pub/dfs/pipelines/instruments/muse/muse-kit-2.10.10.tar.gz"
   sha256 "d3d51e755a0fdffc21d5730e0041f4e3a4826ec9ffcb97c1f0f69860a7a693df"
   license "GPL-2.0-or-later"
-  revision 2
+  revision 3
 
   livecheck do
     url :homepage
@@ -16,6 +16,7 @@ class EsopipeMuse < Formula
   end
 
   depends_on "cpl"
+  depends_on "curl"
   depends_on "erfa"
   depends_on "esorex"
   depends_on "gsl"
@@ -27,6 +28,7 @@ class EsopipeMuse < Formula
     cd "muse-#{version_norevision}" do
       system "./configure", "--prefix=#{prefix}",
              "--with-cpl=#{Formula["cpl"].prefix}",
+             "--with-curl=#{Formula["curl"].prefix}",
              "--with-erfa=#{Formula["erfa"].prefix}",
              "--with-gsl=#{Formula["gsl"].prefix}"
       system "make", "install"
