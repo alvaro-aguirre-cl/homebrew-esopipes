@@ -16,6 +16,7 @@ class EsopipeEspresso < Formula
   end
 
   depends_on "cpl"
+  depends_on "curl"
   depends_on "erfa"
   depends_on "esorex"
   depends_on "gsl"
@@ -30,6 +31,7 @@ class EsopipeEspresso < Formula
              "--with-cpl=#{Formula["cpl"].prefix}",
              "--with-erfa=#{Formula["erfa"].prefix}",
              "--with-gsl=#{Formula["gsl"].prefix}",
+             "--with-curl=#{Formula["curl"].prefix}",
              "--with-libffi=#{Formula["libffi"].prefix}"
       system "make", "install"
     end
