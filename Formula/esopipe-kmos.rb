@@ -15,6 +15,14 @@ class EsopipeKmos < Formula
     regex(/href=.*?kmos-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
+  bottle do
+    root_url "https://github.com/alvaro-aguirre-cl/homebrew-esopipes/releases/download/esopipe-kmos-4.4.4_4"
+    sha256 cellar: :any,                 arm64_sonoma: "f88e225a1c6e9757b12dc8ebf494c2e197131182192b78006c0cad7c3e84c789"
+    sha256 cellar: :any,                 ventura:      "924ff16849c318c22dbc48d352869c5519be977411c79a765fa0404a93587b59"
+    sha256 cellar: :any,                 monterey:     "b3b01a969a60f28485376df1a4929853f756970efad3c33a90e9e86dd6d4aee9"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "dd58f8f03342dc554f134f77416b3ad5495070a5ddfc077da30d7c91901a7c06"
+  end
+
   depends_on "cpl"
   depends_on "esorex"
   depends_on "pkg-config"
