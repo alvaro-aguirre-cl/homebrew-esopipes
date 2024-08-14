@@ -15,6 +15,14 @@ class EsopipeEspresso < Formula
     regex(/href=.*?espdr-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
+  bottle do
+    root_url "https://github.com/alvaro-aguirre-cl/homebrew-esopipes/releases/download/esopipe-espresso-3.2.0_4"
+    sha256 arm64_sonoma: "70113bf74c6367d0088090d624b8c5b27b8a7e302e4fb65c1626c0c895c9d166"
+    sha256 ventura:      "624752fe6718454ca8ce1dd2651a28c61c3b4985539a265c475e31537c6a5ecd"
+    sha256 monterey:     "084c64bad8116e39be0f6328a478a021dd6ee2ffcfac183b1c78a4b058490dcb"
+    sha256 x86_64_linux: "a60a44b48b81595a882af1b7eea5efc6fe96946b7599c725f1700a0e1148a1d9"
+  end
+
   depends_on "cpl"
   depends_on "curl"
   depends_on "erfa"
