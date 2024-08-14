@@ -15,6 +15,14 @@ class Telluriccorr < Formula
     regex(/href=.*?telluriccorr[._-]v?(\d+(?:\.\d+)+)\.t/i)
   end
 
+  bottle do
+    root_url "https://github.com/alvaro-aguirre-cl/homebrew-esopipes/releases/download/telluriccorr-4.3.1_4"
+    sha256 arm64_sonoma: "ed9cd7785f24c07b748b02bca19d0d73141e1da2938d514e5e3374952bb3a4f0"
+    sha256 ventura:      "96509dcfa1bed512468d5e719aaf8fec8c51b8af17e2e9f7b241d49d7b7ead06"
+    sha256 monterey:     "2c1a9ef3d0f2543389e45de69d8eabb1a4e51480a738a6ce46921b58f6212c95"
+    sha256 x86_64_linux: "92ae8eec61ae2bcaf8423ddff91fe4e3dad19f4f54cf2ad0d60b7f2d19e24019"
+  end
+
   depends_on "cpl"
 
   patch do
