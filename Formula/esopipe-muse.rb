@@ -15,6 +15,14 @@ class EsopipeMuse < Formula
     regex(/href=.*?muse-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
+  bottle do
+    root_url "https://github.com/alvaro-aguirre-cl/homebrew-esopipes/releases/download/esopipe-muse-2.10.10_4"
+    sha256 cellar: :any,                 arm64_sonoma: "61b18544f201e4b9f89d23776af51f99b4ac794925e2ace84aac7115f226b150"
+    sha256 cellar: :any,                 ventura:      "a425cb17e5aaa53e952befa931551de81c8e49bf9b28b319bed114d30548d32a"
+    sha256 cellar: :any,                 monterey:     "26207e0ad39223c1f47c874d4e8bd37bebc08e9a77d79c3723138cb0b0a9a2ce"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "70d59d5db61c11413ccfa34060526315bae9a69124830d259a29523481af627f"
+  end
+
   depends_on "cpl"
   depends_on "curl"
   depends_on "erfa"
