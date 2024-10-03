@@ -1,0 +1,34 @@
+name: Update Homebrew Formula
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  
+  workflow_dispatch:      
+
+jobs:
+  update_formula:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Cache Homebrew Bundler RubyGems
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.set-up-homebrew.outputs.gems-path }}
+          key: ${{ runner.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
+          restore-keys: ${{ runner.os }}-rubygems-
+
+      - name: Install dependencies
+        run: |
+          brew install jq 
+
+      - name: Run update script
+        run: |
+          ./scripts/update_formula.sh
+        shell: bash
