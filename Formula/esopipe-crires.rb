@@ -5,10 +5,9 @@
 class EsopipeCrires < Formula
   desc "ESO Crires recipe plugin"
   homepage "https://www.eso.org/sci/software/pipelines/"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/crires/crire-kit-2.3.18-1.tar.gz"
-  sha256 "8ef83d1e51a7836280c35aa71a909cce74035688461f0c47540e5514c716f2af"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/crires/crire-kit-2.3.18-2.3.19.tar.gz"
+  sha256 "89b46db9910071e832497c626f1139527a6d03465ff8d658c6f1121c23f4bd98"
   license "GPL-2.0-or-later"
-  revision 4
 
   livecheck do
     url :homepage
