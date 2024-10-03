@@ -36,7 +36,7 @@ jobs:
 
       - name: Run update script
         env:
-          HOMEBREW_GITHUB_API_TOKEN: ${{ github.token }}
+          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
         run: |
           ./scripts/update_formula.sh
         shell: bash
