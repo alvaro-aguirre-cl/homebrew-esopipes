@@ -73,13 +73,6 @@ jobs:
               echo "Tarbal URL: $tarball_url"
 
               echo "Updating the formula with brew bump-formula-pr..."
-              brew bump-formula-pr \
-              --sha256="$new_sha256" \
-              --url="$tarball_url" \
-              --force \
-              --no-browse \
-              "$formula"
-
               if brew bump-formula-pr \
                   --sha256="$new_sha256" \
                   --url="$tarball_url" \
