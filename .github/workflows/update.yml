@@ -13,8 +13,6 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Checkout the repository
-        uses: actions/checkout@v2
 
       - name: Set up Homebrew
         id: set-up-homebrew
@@ -38,47 +36,56 @@ jobs:
         env:
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
         run: |
+          #!/bin/bash
+
+          set -euo pipefail
+
           echo "Check of new tar versions...."
           json_output=$(brew livecheck --tap alvaro-aguirre-cl/homebrew-esopipes --json)
 
           echo "$json_output" | jq -c '.[] | select(.version.outdated == true)' | while read -r formula; do
 
-              FORMULA_NAME=$(echo "$formula" | jq -r '.formula')
-              CURRENT_VERSION_NUMBER=$(echo "$formula" | jq -r '.version.current')
-              NEW_VERSION_NUMBER=$(echo "$formula" | jq -r '.version.latest')
-              echo "Checking for new version of $FORMULA_NAME..."
+              formula_name=$(echo "$formula" | jq -r '.formula')
+              current_version_number=$(echo "$formula" | jq -r '.version.current')
+              new_version_number=$(echo "$formula" | jq -r '.version.latest')
+              echo "Checking for new version of $formula_name..."
               
-              FORMULA_PATH="Formula/$FORMULA_NAME.rb" # Cambia este valor al path de tu fórmula
-              FORMULA="alvaro-aguirre-cl/homebrew-esopipes/$FORMULA_NAME"
+              formula_path="Formula/$formula_name.rb" # Cambia este valor al path de tu fórmula
+              formula="alvaro-aguirre-cl/homebrew-esopipes/$formula_name"
 
-              CURRENT_URL=$(grep -E '^[[:space:]]*url ".*"' -m 1 $FORMULA_PATH | awk -F'"' '{print $2}')
-              echo "Current tarball URL: $CURRENT_URL"
+              current_url=$(grep -E '^[[:space:]]*url ".*"' -m 1 "$formula_path" | awk -F'"' '{print $2}')
+              echo "Current tarball URL: $current_url"
 
-              TARBALL_URL=$(echo $CURRENT_URL | sed "s/$CURRENT_VERSION_NUMBER/$NEW_VERSION_NUMBER/")
-              echo "New tarball URL: $TARBALL_URL"
+              tarball_url=${current_url//"$current_version_number"/"$new_version_number"}
+              echo "New tarball URL: $tarball_url"
 
-              echo "Downloading new tarball from $TARBALL_URL..."
-              curl -L $TARBALL_URL -o /tmp/source-$NEW_VERSION_NUMBER.tar.gz
+              echo "Downloading new tarball from $tarball_url..."
+              curl -L "$tarball_url" -o /tmp/source-"$new_version_number".tar.gz
 
-              if [ ! -f /tmp/source-$NEW_VERSION_NUMBER.tar.gz ]; then
+              if [ ! -f /tmp/source-"$new_version_number".tar.gz ]; then
                   echo "Error: Failed to download tarball."
                   exit 1
               fi
 
-              NEW_SHA256=$(shasum -a 256 /tmp/source-$NEW_VERSION_NUMBER.tar.gz | awk '{print $1}')
-              echo "New version number: $NEW_VERSION_NUMBER"
-              echo "New checksum: $NEW_SHA256"
-              echo "Tarbal URL: $TARBALL_URL"
+              new_sha256=$(shasum -a 256 /tmp/source-"$new_version_number".tar.gz | awk '{print $1}')
+              echo "New version number: $new_version_number"
+              echo "New checksum: $new_sha256"
+              echo "Tarbal URL: $tarball_url"
 
               echo "Updating the formula with brew bump-formula-pr..."
               brew bump-formula-pr \
-              --sha256="$NEW_SHA256" \
-              --url="$TARBALL_URL" \
+              --sha256="$new_sha256" \
+              --url="$tarball_url" \
               --force \
               --no-browse \
-              $FORMULA
+              "$formula"
 
-              if [ $? -eq 0 ]; then
+              if brew bump-formula-pr \
+                  --sha256="$new_sha256" \
+                  --url="$tarball_url" \
+                  --force \
+                  --no-browse \
+                  "$formula"; then
                   echo "Formula updated successfully!"
               else
                   echo "Error updating formula with brew bump-formula-pr"
@@ -87,3 +94,4 @@ jobs:
           done
 
           echo "Process completed..."
+        shell: bash
