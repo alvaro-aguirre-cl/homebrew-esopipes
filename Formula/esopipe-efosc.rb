@@ -5,8 +5,8 @@
 class EsopipeEfosc < Formula
   desc "ESO EFOSC recipe plugin"
   homepage "https://www.eso.org/sci/software/pipelines/"
-  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/efosc/efosc-kit-2.3.9.tar.gz"
-  sha256 "efc7ecce753a8a77946d2ed279ee399ac4a4d7170e8a1e76fe9cbb6eda7a5e6f"
+  url "https://ftp.eso.org/pub/dfs/pipelines/instruments/efosc/efosc-kit-2.3.9-2.tar.gz"
+  sha256 "515a11ddaa6f71d2ebcfff91433b782089f93af5fb7ce3daf973ccfb456f9bba"
   license "GPL-2.0-or-later"
 
   livecheck do
