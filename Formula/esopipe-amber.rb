@@ -16,6 +16,7 @@ class EsopipeAmber < Formula
 
   depends_on "erfa"
   depends_on "gsl"
+  depends_on "cpl"
 
   def install
     version_norevision = version.to_s[/(\d+(?:[.]\d+)+)/i, 1]

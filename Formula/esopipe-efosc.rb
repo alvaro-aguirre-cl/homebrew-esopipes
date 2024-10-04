@@ -20,6 +20,7 @@ class EsopipeEfosc < Formula
   depends_on "gsl"
   depends_on "pkg-config"
   depends_on "telluriccorr"
+  depends_on "esorex"
 
   def install
     version_norevision = version.to_s[/(\d+(?:[.]\d+)+)/i, 1]
