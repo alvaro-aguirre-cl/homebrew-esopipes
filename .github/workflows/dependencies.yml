@@ -1,0 +1,66 @@
+name: Update Homebrew Formula
+
+on:
+  schedule:
+    - cron: '0 0 1 * *'  
+  workflow_dispatch:      
+
+jobs:
+  update_formula:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Set up git
+        uses: Homebrew/actions/git-user-config@master
+
+      - name: Cache Homebrew Bundler RubyGems
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.set-up-homebrew.outputs.gems-path }}
+          key: ${{ runner.os }}-rubygems-${{ steps.set-up-homebrew.outputs.gems-hash }}
+          restore-keys: ${{ runner.os }}-rubygems-
+
+      - name: Install dependencies
+        run: |
+          brew install jq 
+
+      - name: Run update script
+        env:
+          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
+        run: |
+          #!/bin/bash
+
+          set -euo pipefail
+
+          echo "Check of new versions of the dependencies"
+          json_output=$(brew livecheck cpl gsl --json)
+
+          echo "$json_output" | jq -c '.[] | select(.version.outdated == true)' | while read -r formula; do
+
+              formula_name=$(echo "$formula" | jq -r '.formula')
+              current_version_number=$(echo "$formula" | jq -r '.version.current')
+              new_version_number=$(echo "$formula" | jq -r '.version.latest')
+              echo "Updating the formula with brew bump-formula-pr..."
+              
+              if brew bump-formula-pr \
+                  --force \
+                  --revision=6 \
+                  --no-browse \
+                  "$formula"; then
+                  echo "Formula updated successfully!"
+              else
+                  echo "Error updating formula with brew bump-formula-pr"
+                  exit 1
+              fi              
+          done
+
+          echo "Process completed..."
+        shell: bash
