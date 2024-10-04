@@ -14,8 +14,8 @@ class EsopipeAmber < Formula
     regex(/href=.*?amber-kit-(\d+(?:[.-]\d+)+)\.t/i)
   end
 
-  depends_on "erfa"
   depends_on "cpl"
+  depends_on "erfa"
   depends_on "gsl"
 
   def install

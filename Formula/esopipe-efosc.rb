@@ -18,8 +18,8 @@ class EsopipeEfosc < Formula
   depends_on "cpl"
   depends_on "erfa"
   depends_on "gsl"
-  depends_on "pkg-config"
   depends_on "esorex"
+  depends_on "pkg-config"
   depends_on "telluriccorr"
 
   def install
