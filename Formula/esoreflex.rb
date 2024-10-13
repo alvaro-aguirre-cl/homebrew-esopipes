@@ -1,3 +1,7 @@
+# typed: strict
+# frozen_string_literal: true
+
+# Esoreflex library
 class Esoreflex < Formula
   desc "Reflex environment to execute ESO pipelines"
   homepage "https://www.eso.org/sci/software/esoreflex/"
@@ -91,6 +95,7 @@ class Esoreflex < Formula
     rm_r(pkgshare/"common/src")
     rm_r(pkgshare/"ptolemy/src/bin/macContents/Contents/MacOS/JavaApplicationStub")
     rm_r(pkgshare/"build-area/resources/installer/launch4j")
+    system "#{HOMEBREW_PREFIX}/bin/python3.9", "-m", "pip", "install", "astropy", "matplotlib"
   end
 
   test do
