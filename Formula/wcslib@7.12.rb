@@ -9,7 +9,7 @@ class WcslibAT712 < Formula
     url :homepage
     regex(/href=.*?wcslib[._-]v?(\d+(?:\.\d+)+)\.t/i)
   end
-  
+
   depends_on "cfitsio@4.2.0"
 
   def install

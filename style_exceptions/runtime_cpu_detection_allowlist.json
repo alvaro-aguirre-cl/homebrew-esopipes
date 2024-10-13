@@ -1,0 +1,18 @@
+[
+  "abseil",
+  "aom",
+  "blis",
+  "botan",
+  "fftw@3.3.9",
+  "highway",
+  "knot",
+  "libvpx",
+  "nsd",
+  "openblas",
+  "opencv",
+  "open-mpi",
+  "qt",
+  "spidermonkey",
+  "vc",
+  "xxhash"
+]

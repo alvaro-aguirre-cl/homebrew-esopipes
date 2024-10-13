@@ -23,7 +23,11 @@ class Detmon < Formula
 
   def install
     system "./configure", "--prefix=#{prefix}",
-           "--with-cpl=#{Formula["cpl"].prefix}", "--with-curl=#{Formula["curl"].prefix}", "--with-erfa=#{Formula["erfa"].prefix}", "--with-esorex=#{Formula["esorex"].prefix}", "--with-gsl=#{Formula["gsl"].prefix}"
+           "--with-cpl=#{Formula["cpl"].prefix}",
+           "--with-curl=#{Formula["curl"].prefix}",
+           "--with-erfa=#{Formula["erfa"].prefix}",
+           "--with-esorex=#{Formula["esorex"].prefix}",
+           "--with-gsl=#{Formula["gsl"].prefix}"
     system "make", "install"
   end
 
